@@ -16,7 +16,7 @@ class TestControllerSpec extends MockMvcSpecification {
 
     void setup() {
         controller = new TestController()
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build()
+        mockMvc = standaloneSetup(controller)
     }
 
     def "Return status 200 OK"() {

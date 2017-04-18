@@ -1,6 +1,7 @@
 package com.github.spock.spring.utils
 
 import org.hamcrest.Matcher
+import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.ResultMatcher
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
@@ -8,9 +9,19 @@ import org.springframework.test.web.servlet.result.ContentResultMatchers
 import org.springframework.test.web.servlet.result.JsonPathResultMatchers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.result.StatusResultMatchers
+import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import org.springframework.web.context.WebApplicationContext
 import spock.lang.Specification
 
 class MockMvcSpecification extends Specification {
+
+    static MockMvc standaloneSetup(Object... controllers) {
+        return MockMvcBuilders.standaloneSetup(controllers).build()
+    }
+
+    static MockMvc webAppContextSetup(WebApplicationContext context) {
+        return MockMvcBuilders.webAppContextSetup(context).build()
+    }
 
     static MockHttpServletRequestBuilder get(String urlTemplate, Object... uriVars) {
         return MockMvcRequestBuilders.get(urlTemplate, uriVars)
