@@ -1,0 +1,16 @@
+bintray {
+    user = bintrayUser
+    key = bintrayKey
+    publish = true
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        userOrg = 'jarlehansen'
+        name = 'spock-spring-utils'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/jarlehansen/spock-spring-utils'
+        version {
+            name = version
+        }
+    }
+}

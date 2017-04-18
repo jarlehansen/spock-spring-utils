@@ -1,3 +1,7 @@
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+
 apply plugin: 'groovy'
 
 version = '0.0.1-SNAPSHOT'
@@ -11,4 +15,15 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web:1.5.2.RELEASE')
     compile('org.springframework.boot:spring-boot-starter-test:1.5.2.RELEASE')
     compile('org.spockframework:spock-spring:1.0-groovy-2.4')
+}
+
+task jarSources(type:Jar){
+    from sourceSets.main.allSource
+    classifier = 'source'
+}
+
+build.dependsOn jarSources
+
+if (project.hasProperty('bintrayUser') && project.hasProperty('bintrayKey')) {
+    apply from: 'bintray.gradle'
 }
