@@ -1,11 +1,11 @@
 # spock-spring-utils
 
-##Installation
+## Installation
 ```groovy
 testCompile('com.github.spock.spring.utils:spock-spring-utils:0.0.1')
 ```
 
-##MockMvcSpecification
+## MockMvcSpecification
 
 Simplifies the setup required to create `MockMvc` tests with [spock](http://spockframework.org/).
 
