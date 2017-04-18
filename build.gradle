@@ -4,7 +4,7 @@ plugins {
 
 apply plugin: 'groovy'
 
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = 1.8
 
 repositories {
@@ -17,12 +17,12 @@ dependencies {
     compile('org.spockframework:spock-spring:1.0-groovy-2.4')
 }
 
-task jarSources(type:Jar){
+task sourcesJar(type:Jar){
     from sourceSets.main.allSource
-    classifier = 'source'
+    classifier = 'sources'
 }
 
-build.dependsOn jarSources
+build.dependsOn sourcesJar
 
 if (project.hasProperty('bintrayUser') && project.hasProperty('bintrayKey')) {
     apply from: 'bintray.gradle'

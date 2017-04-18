@@ -1,3 +1,9 @@
+group 'com.github.spock.spring.utils'
+
+bintrayUpload {
+    dependsOn assemble
+}
+
 bintray {
     user = bintrayUser
     key = bintrayKey
@@ -10,7 +16,11 @@ bintray {
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/jarlehansen/spock-spring-utils'
         version {
-            name = version
+            name = project.version
         }
     }
+}
+
+artifacts {
+    archives sourcesJar
 }
