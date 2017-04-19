@@ -2,7 +2,7 @@
 
 ## Installation
 ```groovy
-testCompile('com.github.spock.spring.utils:spock-spring-utils:0.0.1')
+testCompile('com.github.spock.spring.utils:spock-spring-utils:0.0.2')
 ```
 
 ## MockMvcSpecification
