@@ -2,7 +2,7 @@
 
 ## Installation
 ```groovy
-testCompile('com.github.spock.spring.utils:spock-spring-utils:0.0.3')
+testCompile('com.github.spock.spring.utils:spock-spring-utils:1.0.0')
 ```
 
 ## MockMvcSpecification
@@ -25,6 +25,8 @@ class TestControllerSpec extends MockMvcSpecification {
 
         then:
         response.andExpect(status().isOk())
+                .andExpect(jsonPathSize('$', 1))
+                .andExpect(jsonPathEquals('$[0].test', '123'))
     }
 }
 ```

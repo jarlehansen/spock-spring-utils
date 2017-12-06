@@ -1,6 +1,8 @@
 package com.github.spock.spring.utils
 
+import org.hamcrest.CoreMatchers
 import org.hamcrest.Matcher
+import org.hamcrest.Matchers
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.ResultMatcher
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder
@@ -93,6 +95,22 @@ class MockMvcSpecification extends Specification {
 
     static <T> ResultMatcher jsonPath(String expression, Matcher<T> matcher) {
         return MockMvcResultMatchers.jsonPath(expression, matcher)
+    }
+
+    static <T> Matcher<T> equalTo(T operand) {
+        return Matchers.equalTo(operand)
+    }
+
+    static <E> Matcher<Collection<? extends E>> hasSize(int size) {
+        return Matchers.hasSize(size)
+    }
+
+    static ResultMatcher jsonPathEquals(String expression, String equals) {
+        return jsonPath(expression).value(CoreMatchers.equalTo(equals))
+    }
+
+    static ResultMatcher jsonPathSize(String expression, int size) {
+        return jsonPath(expression, hasSize(size))
     }
 
 }
